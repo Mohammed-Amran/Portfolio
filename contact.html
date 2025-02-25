@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 230, 199, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight {
+            color: #00e6c7;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: #00e6c7;
+        }
+
+        /* Contact Section */
+        .page-title {
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .page-title .highlight {
+            font-size: inherit;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 5% 4rem;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: transparent;
+            border: 1px solid #00e6c7;
+            border-radius: 25px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 230, 199, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 15px rgba(0, 230, 199, 0.5);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .submit-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        .submit-btn {
+            background-color: #00e6c7;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 230, 199, 0.7);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 230, 199, 1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .submit-container {
+                grid-column: span 1;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                padding: 1rem 5%;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span>Mohammed &nbsp;</span><span class="highlight">Amran</span>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-title">
+        Contact <span class="highlight">Me</span>
+    </div>
+
+    <div class="contact-container">
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="form-group full-width">
+                <textarea class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript can be added here for form validation
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add form submission logic here
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
