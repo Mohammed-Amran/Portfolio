@@ -3,20 +3,777 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
-
-    <link rel="stylesheet" href="design.css">
-    
-    <script src="functionality.js"></script>
+    <title>Mohammed Amran - Portfolio</title>
 
     <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 5rem 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.9);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 230, 199, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo span {
+            transition: all 0.3s ease;
+        }
+
+        .highlight {
+            color: #00e6c7;
+        }
+
+        .logo:hover span:not(.highlight) {
+            text-shadow: 0 0 10px rgba(0, 230, 199, 0.7), 0 0 20px rgba(0, 230, 199, 0.5);
+        }
+
+        .logo:hover .highlight {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: #00e6c7;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            z-index: 90;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 5% 5rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .circle-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid #00e6c7;
+            box-shadow: 0 0 30px #00e6c7;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 20px #00e6c7;
+            }
+            50% {
+                box-shadow: 0 0 40px #00e6c7;
+            }
+            100% {
+                box-shadow: 0 0 20px #00e6c7;
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Section Titles */
+        .page-title {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .page-title .highlight {
+            font-size: inherit;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .social-icon:hover {
+            background-color: #00e6c7;
+            transform: translateY(-5px);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #00e6c7;
+            color: #0a0a0a;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 1px solid #00e6c7;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 230, 199, 0.3);
+        }
+
+        /* Education Timeline */
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00e6c7;
+            box-shadow: 0 0 15px rgba(0, 230, 199, 0.7);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 8rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 40px;
+            border: 1px solid #00e6c7;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 230, 199, 0.3);
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 0 30px rgba(0, 230, 199, 0.5);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            float: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            float: left;
+        }
+
+        .timeline-item:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: -60px; /* Increased spacing between year and dot */
+            left: 50%;
+            text-align: center;
+            padding: 0.5rem;
+            color: white;
+            font-weight: bold;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 1.2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: #00e6c7;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0, 230, 199, 1);
+        }
+
+        .timeline-title {
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .timeline-description {
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 5% 4rem;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: transparent;
+            border: 1px solid #00e6c7;
+            border-radius: 25px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 230, 199, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 15px rgba(0, 230, 199, 0.5);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .submit-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        .submit-btn {
+            background-color: #00e6c7;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 230, 199, 0.7);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 230, 199, 1);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            #home {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 7rem;
+            }
+            
+            .hero-content {
+                margin-top: 3rem;
+            }
+            
+            .social-icons, .action-buttons {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                float: right;
+                margin-left: 60px;
+            }
+            
+            .timeline-year {
+                left: 30px;
+                top: -30px;
+                transform: translateX(-50%);
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .submit-container {
+                grid-column: span 1;
+                justify-content: center;
+            }
+            
+            .image-container, .profile-image {
+                width: 280px;
+                height: 280px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 5%;
+                top: 1.5rem;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #111;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+                z-index: 100;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+            
+            .image-container, .profile-image {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+                padding: 2rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+        }
+
         
+        /*CSS Code for The Active sideBar Indiccation*/
+    
+/* Right Side Navigation Indicator - Updated from circles to rectangles */
+.side-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-nav-item {
+    width: 5px;  /* Thinner width for rectangle shape */
+    height: 20px; /* Taller height for rectangle shape */
+    border-radius: 2px; /* Slight rounding of corners */
+    background-color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.side-nav-item:hover {
+    background-color: rgba(0, 230, 199, 0.5);
+}
+
+.side-nav-item.active {
+    background-color: #00e6c7;
+    box-shadow: 0 0 10px #00e6c7;
+    height: 30px; /* Make active item slightly taller */
+}
+
+.side-nav-tooltip {
+    position: absolute;
+    right: 15px; /* Adjusted position */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #00e6c7;
+    color: #0a0a0a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.side-nav-item:hover .side-nav-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/*CSS code for the footer*/
+/* Footer styles with glowing social icons */
+footer {
+    background-color: #0a0a0a;
+    padding: 4rem 5% 3rem; /* Increased vertical padding to make footer taller */
+    text-align: center;
+    /* Removed the border-top line */
+}
+
+.social-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem; /* Increased spacing between social icons and links */
+}
+
+.footer-social-icon {
+    width: 45px; /* Made icons slightly larger */
+    height: 45px;
+    border-radius: 50%;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.footer-social-icon svg {
+    width: 22px; /* Made svg icons slightly larger */
+    height: 22px;
+    fill: #00e6c7;
+    transition: all 0.3s ease;
+}
+
+/* Glow effect on hover and static glow */
+.footer-social-icon {
+    box-shadow: 0 0 10px rgba(0, 230, 199, 0.5);
+}
+
+.footer-social-icon:hover {
+    background-color: #00e6c7;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 230, 199, 0.8);
+}
+
+.footer-social-icon:hover svg {
+    fill: #0a0a0a;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem; /* Increased gap between footer links */
+    margin-top: 2.5rem; /* Increased margin to add more vertical space */
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem; /* Slightly larger font size */
+    position: relative;
+    padding-bottom: 3px; /* Space for the underline */
+}
+
+/* Underline effect with the greenish color */
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #00e6c7;
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #00e6c7;
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 600px) {
+    .footer-links {
+        gap: 1.5rem; /* Increased mobile gap */
+        flex-direction: column;
+    }
+    
+    .social-footer {
+        gap: 1.2rem; /* Increased mobile gap */
+    }
+    
+    footer {
+        padding: 3rem 5% 2.5rem; /* Slightly less padding on mobile but still taller */
+    }
+}
+
+
+/*Extra CSS code for underline effect of the topbar buttons*/
+/* Add underline effect to top navigation similar to footer links */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1rem;
+    position: relative;
+    padding-bottom: 3px; /* Space for the underline */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #00e6c7;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+
+
     </style>
 </head>
+
 <body>
 
+    
+    <!-- Side Navigation -->
+<div class="side-nav">
+    <div class="side-nav-item active" data-section="home">
+        <div class="side-nav-tooltip">Home</div>
+    </div>
+    <div class="side-nav-item" data-section="education">
+        <div class="side-nav-tooltip">Education</div>
+    </div>
+    <div class="side-nav-item" data-section="services">
+        <div class="side-nav-tooltip">Services</div>
+    </div>
+    <div class="side-nav-item" data-section="testimonials">
+        <div class="side-nav-tooltip">Testimonials</div>
+    </div>
+    <div class="side-nav-item" data-section="contact">
+        <div class="side-nav-tooltip">Contact</div>
+    </div>
+</div>
+
     <header>
-        <a href="index.html" class="logo">
+        <a href="#home" class="logo">
             <span>Mohammed &nbsp;</span><span class="highlight">Amran</span>
         </a>
         
@@ -30,18 +787,19 @@
         
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Testimonials</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="overlay"></div>
 
-    <section class="hero">
+    <!-- Home Section -->
+    <section id="home">
         <div class="hero-content">
             <h1>Hi, It's <span class="highlight">Mohammed Amran</span></h1>
             <h2>I'm a <span class="highlight">Software Developer</span></h2>
@@ -51,15 +809,9 @@
                 user-friendly experiences to the users.
             </p>
             
-
-            <!--============================== Social Media Links =========================-->
-
-
-           
             <div class="social-icons">
-
-                 <!-- LinkedIn Link -->
-                <a href="https://www.linkedin.com/in/mohammed-abdulrahman-a0635427a/" class="social-icon">
+                <!-- LinkedIn Link -->
+                <a href="https://www.linkedin.com/in/mohammed-abdulrahman-a0635427a/" class="social-icon" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                         <rect x="2" y="9" width="4" height="12"></rect>
@@ -68,7 +820,7 @@
                 </a>
 
                 <!-- GitHub Link -->
-                <a href="https://github.com/Mohammed-Amran" class="social-icon">
+                <a href="https://github.com/Mohammed-Amran" class="social-icon" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
@@ -81,18 +833,11 @@
                         <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
                     </svg>
                 </a>
-                <!-- Instagram Link 
-                <a href="#" class="social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25zM12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-                    </svg>
-                </a>
-            -->
             </div>
             
             <div class="action-buttons">
-                <a href="#" class="btn btn-primary">Hire Me</a>
-                <a href="#" class="btn btn-secondary">Contact</a>
+                <a href="#contact" class="btn btn-primary">Hire Me</a>
+                <a href="#contact" class="btn btn-secondary">Contact</a>
             </div>
         </div>
         
@@ -104,7 +849,280 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education">
+        <div class="page-title">
+            Education
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline">
+                <!-- High School -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h2 class="timeline-title">High School</h2>
+                        <p class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- University -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h2 class="timeline-title">University</h2>
+                        <p class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Internship -->
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h2 class="timeline-title">Internship</h2>
+                        <p class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Placeholder) -->
+    <section id="services">
+        <div class="page-title">
+            Services
+        </div>
+        <div style="text-align: center; padding: 2rem 5%;">
+            <p>Services section content will be added here.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Placeholder) -->
+    <section id="testimonials">
+        <div class="page-title">
+            Testimonials
+        </div>
+        <div style="text-align: center; padding: 2rem 5%;">
+            <p>Testimonials section content will be added here.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="page-title">
+            Contact <span class="highlight">Me</span>
+        </div>
+
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Subject">
+                </div>
+                <div class="form-group full-width">
+                    <textarea class="form-control" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+<!-- Footer Section with Social Media Icons -->
+<footer>
+    <div class="social-footer">
+        <a href="https://www.linkedin.com/in/mohammed-abdulrahman-a0635427a/" class="footer-social-icon" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
+        
+        <a href="#" class="footer-social-icon" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-1.2 19.2h-2.4V9.6h2.4v9.6zm-1.2-10.8c-.795 0-1.2-.405-1.2-1.2 0-.795.405-1.2 1.2-1.2.795 0 1.2.405 1.2 1.2 0 .795-.405 1.2-1.2 1.2zm10.8 10.8h-2.4v-4.8c0-1.2-.6-1.8-1.2-1.8-.6 0-1.2.6-1.2 1.8v4.8h-2.4V9.6h2.4v1.2c.6-.6 1.2-1.2 2.4-1.2 1.8 0 2.4 1.2 2.4 3v6.6z"/>
+            </svg>
+        </a>
+        
+        <a href="https://github.com/Mohammed-Amran" class="footer-social-icon" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </a>
+        
+        <a href="https://twitter.com" class="footer-social-icon" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.019 10.019 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/>
+            </svg>
+        </a>
+    </div>
     
+    <div class="footer-links">
+        <a href="#faq">FAQ</a>
+        <a href="#services">Services</a>
+        <a href="#about">About Me</a>
+        <a href="#contact">Contact</a>
+        <a href="#testimonials">Testimonials</a>
+    </div>
+</footer>
+
+
+    <script>
+     // Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navMenu = document.querySelector('nav ul');
+const overlay = document.querySelector('.overlay');
+
+mobileMenuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+// Enhanced smooth scrolling function
+function smoothScrollTo(targetPosition, duration = 1000) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+    
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+    
+    // Easing function for smoother animation
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+    
+    requestAnimationFrame(animation);
+}
+
+// Smooth scrolling for navigation items with enhanced animation
+const navItems = document.querySelectorAll('nav ul li a');
+navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        // Close mobile menu if open
+        navMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        
+        // Get the href attribute
+        const targetId = item.getAttribute('href');
+        
+        // If it's an anchor link (starts with #)
+        if (targetId.startsWith('#')) {
+            e.preventDefault();
+            
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                // Get the header height for offset
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                // Calculate position to scroll to
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                // Use custom smooth scroll with animation (1000ms = 1 second duration)
+                smoothScrollTo(targetPosition, 1000);
+            }
+        }
+    });
+});
+
+// Side navigation click event with enhanced animation
+const sideNavItems = document.querySelectorAll('.side-nav-item');
+sideNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const sectionId = item.getAttribute('data-section');
+        const targetSection = document.getElementById(sectionId);
+        
+        if (targetSection) {
+            // Get the header height for offset
+            const headerHeight = document.querySelector('header').offsetHeight;
+            
+            // Calculate position to scroll to
+            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            // Use custom smooth scroll with animation
+            smoothScrollTo(targetPosition, 1000);
+        }
+    });
+});
+
+// Active navigation highlighting
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if(pageYOffset >= (sectionTop - sectionHeight/3)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    // Update top navigation
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href').substring(1) === current) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Update side navigation
+    sideNavItems.forEach(item => {
+        item.classList.remove('active');
+        if(item.getAttribute('data-section') === current) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// Contact form submission
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Add form submission logic here
+    alert('Thank you for your message! I will get back to you soon.');
+    this.reset();
+});
+
+    </script>
 
 
 </body>
