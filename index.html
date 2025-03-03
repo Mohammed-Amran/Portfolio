@@ -617,7 +617,7 @@
 /* Footer styles with glowing social icons */
 footer {
     background-color: #0a0a0a;
-    padding: 4rem 5% 3rem; /* Increased vertical padding to make footer taller */
+    padding: 2rem 5% 2rem; /* Increased vertical padding to make footer taller */
     text-align: center;
     /* Removed the border-top line */
 }
@@ -626,7 +626,7 @@ footer {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 2.5rem; /* Increased spacing between social icons and links */
+    margin-bottom: 1.5rem; /* Increased spacing between social icons and links */
 }
 
 .footer-social-icon {
@@ -669,7 +669,7 @@ footer {
     justify-content: center;
     flex-wrap: wrap;
     gap: 2.5rem; /* Increased gap between footer links */
-    margin-top: 2.5rem; /* Increased margin to add more vertical space */
+    margin-top: 1.5rem; /* Increased margin to add more vertical space */
 }
 
 .footer-links a {
@@ -713,7 +713,7 @@ footer {
     }
     
     footer {
-        padding: 3rem 5% 2.5rem; /* Slightly less padding on mobile but still taller */
+        padding: 1.5rem 5% 1.5rem; /* Slightly less padding on mobile but still taller */
     }
 }
 
@@ -752,7 +752,43 @@ nav ul li a.active::after {
 
 <body>
 
+    <audio id="bg-music" loop>
+    <source src="rain.mp3" type="audio/mpeg">
+</audio>
+
+<button id="play-music" style="display: none;">Play Music</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let audio = document.getElementById("bg-music");
+        let playButton = document.getElementById("play-music");
+
+        // Try to play immediately
+        audio.play().then(() => {
+            console.log("Autoplay started successfully!");
+        }).catch(error => {
+            console.log("Autoplay blocked. Waiting for user interaction...");
+            playButton.style.display = "block"; // Show the button
+        });
+
+        // If blocked, play when user clicks anywhere
+        document.addEventListener("click", function () {
+            audio.play().catch(err => console.log("Still blocked:", err));
+            playButton.style.display = "none"; // Hide button once played
+        });
+
+        // Backup: Button click
+        playButton.addEventListener("click", function () {
+            audio.play();
+            playButton.style.display = "none";
+        });
+    });
+</script>
+
     
+
+
+
     <!-- Side Navigation -->
 <div class="side-nav">
     <div class="side-nav-item active" data-section="home">
