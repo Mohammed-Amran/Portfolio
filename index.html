@@ -142,6 +142,7 @@
             height: 350px;
             border-radius: 50%;
             object-fit: cover;
+            object-position: top;
             position: relative;
         }
 
@@ -469,6 +470,24 @@
             color: white;
             font-size: 1.5rem;
             font-weight: bold;
+        }
+
+        .timeline-title-link {
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease, text-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .timeline-title-link:hover .timeline-title,
+        .timeline-title-link:focus .timeline-title {
+            color: #00e6c7;
+            text-shadow: 0 0 10px rgba(0, 230, 199, 0.8), 0 0 20px rgba(0, 230, 199, 0.5);
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .timeline-title-link .timeline-title {
+            display: inline-block;
         }
 
         .timeline-description {
@@ -913,17 +932,29 @@ nav ul li a.active::after {
 
     <!-- Side Navigation -->
 <div class="side-nav">
+
     <div class="side-nav-item active" data-section="home">
+
         <div class="side-nav-tooltip">Home</div>
+
     </div>
+
     <div class="side-nav-item" data-section="aboutme">
+
         <div class="side-nav-tooltip">About Me</div>
+
     </div>
+
     <div class="side-nav-item" data-section="skills">
+
         <div class="side-nav-tooltip">Skills</div>
+
     </div>
+
     <div class="side-nav-item" data-section="projects">
+
         <div class="side-nav-tooltip">Projects</div>
+
     </div>
    
 </div>
@@ -1040,7 +1071,7 @@ nav ul li a.active::after {
 
                 <div class="circle-glow"></div>
 
-                <img src="mineEdited.png" alt="Profile Image" class="profile-image">
+                <img src="mine.jpg" alt="Profile Image" class="profile-image">
 
             </div>
         </div>
@@ -1158,7 +1189,9 @@ nav ul li a.active::after {
             
                     <div class="timeline-content">
             
-                        <h2 class="timeline-title">Web Development Bootcamp</h2>
+                        <a href="WebCert.pdf" target="_blank" rel="noopener noreferrer" class="timeline-title-link">
+                            <h2 class="timeline-title">Web Development Bootcamp</h2>
+                        </a>
 
                         <h3> Online Bootcamp | Nov & Dec 2023 </h3> <br>
             
@@ -1202,10 +1235,15 @@ nav ul li a.active::after {
                     <ul class="skills-list">
 
                         <li>C++</li>
+
                         <li>Java</li>
+
                         <li>C#</li>
+
                         <li>Dart</li>
+
                         <li>JavaScript</li>
+
                         <li>SQL</li>
 
                     </ul>
@@ -1223,10 +1261,15 @@ nav ul li a.active::after {
                     <ul class="skills-list">
 
                         <li>Flutter</li>
+                        
                         <li>Spring Boot</li>
+
                         <li>.NET</li>
+
                         <li>Node.js</li>
+
                         <li>Backend Development</li>
+
                         <li>Git & GitHub</li>
 
                     </ul>
@@ -1238,79 +1281,116 @@ nav ul li a.active::after {
         </div>
 
         <div class="skills-table-container">
+
             <div class="skills-table-card">
+
                 <h2 class="timeline-title">Language Proficiency</h2>
+
                 <table class="skills-table">
+
                     <thead>
+
                         <tr>
+
                             <th>Language</th>
+
                             <th>Listening</th>
+
                             <th>Reading</th>
+
                             <th>Writing</th>
+
                             <th>Speaking</th>
+
                         </tr>
+
                     </thead>
+
                     <tbody>
+
                         <tr>
                             <td>English</td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
                                 <div class="progress-text">100%</div>
                             </td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
                                 <div class="progress-text">100%</div>
                             </td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
                                 <div class="progress-text">100%</div>
                             </td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
                                 <div class="progress-text">100%</div>
                             </td>
+
                         </tr>
+
                         <tr>
+
                             <td>Turkish</td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
                                 <div class="progress-text">80%</div>
                             </td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
                                 <div class="progress-text">75%</div>
                             </td>
-                            <td>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
-                                <div class="progress-text">70%</div>
-                            </td>
-                            <td>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
-                                <div class="progress-text">85%</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Arabic</td>
-                            <td>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
-                                <div class="progress-text">70%</div>
-                            </td>
-                            <td>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
-                                <div class="progress-text">65%</div>
-                            </td>
+
                             <td>
                                 <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
                                 <div class="progress-text">60%</div>
                             </td>
+
                             <td>
-                                <div class="progress-bar"><div class="progress-fill" style="width: 68%;"></div></div>
-                                <div class="progress-text">68%</div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                                <div class="progress-text">65%</div>
                             </td>
+
                         </tr>
+
+                        <tr>
+
+                            <td>Arabic</td>
+
+                            <td>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                                <div class="progress-text">85%</div>
+                            </td>
+
+                            <td>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                                <div class="progress-text">80%</div>
+                            </td>
+
+                            <td>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+                                <div class="progress-text">50%</div>
+                            </td>
+
+                            <td>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+                                <div class="progress-text">60%</div>
+                            </td>
+
+                        </tr>
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </div>
 
     </section>
