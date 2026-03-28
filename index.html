@@ -439,6 +439,143 @@
             .skills-card { flex: 1 1 100%; }
         }
 
+        /* Projects Section Styling */
+        .projects-container {
+            margin: 2rem auto;
+            max-width: 1100px;
+            padding: 0 1rem;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.62);
+            border: 1px solid #00e6c7;
+            border-radius: 28px;
+            padding: 1.8rem;
+            box-shadow: 0 0 20px rgba(0, 230, 199, 0.25);
+            text-align: left;
+        }
+
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .project-title-wrapper .timeline-title {
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .project-github-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #111;
+            border: 1px solid #333;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .project-github-link svg {
+            width: 22px;
+            height: 22px;
+            fill: #00e6c7;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .project-github-link:hover {
+            background-color: #00e6c7;
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 0 15px rgba(0, 230, 199, 0.8);
+        }
+
+        .project-github-link:hover svg {
+            fill: #0a0a0a;
+        }
+
+        .project-content-row {
+            display: flex;
+            gap: 3.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .project-description-col {
+            flex: 1;
+        }
+
+        .project-description-col .timeline-description {
+            margin: 0;
+            text-align: left;
+        }
+
+        .project-tech-col {
+            flex: 1;
+        }
+
+        .project-tech-title {
+            color: #00e6c7;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .project-tech-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-tech-list li {
+            color: white;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .project-tech-list li::before {
+            content: "• ";
+            color: #00e6c7;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .project-images-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 230, 199, 0.1), rgba(0, 230, 199, 0.05));
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 900px) {
+            .skills-card { flex: 1 1 calc(50% - 1rem); }
+            .skills-table-card { padding: 1rem; }
+            .project-content-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .project-image-placeholder {
+                width: calc(50% - 0.75rem);
+            }
+        }
+
         .timeline-year {
             position: absolute;
             top: -60px; /* Increased spacing between year and dot */
@@ -1396,14 +1533,358 @@ nav ul li a.active::after {
     </section>
 
 
-    <!-- Projects Section (Placeholder) -->
+    <!-- Projects Section -->
     <section id="projects">
+
         <div class="page-title">
+
             Projects
+
         </div>
-        <div style="text-align: center; padding: 2rem 5%;">
-            <p>Projects section content will be added here.</p>
+
+        <div class="projects-container">
+
+            <!-- Bakery Ordering System project -->
+            <div class="project-card">
+
+                <div class="project-header">
+
+                    <div class="project-title-wrapper">
+
+                        <h2 class="timeline-title">Bakery Ordering System 🥖🍰</h2>
+
+                        <a href="https://github.com/Mohammed-Amran/bakery-ordering-system" target="_blank" rel="noopener noreferrer" class="project-github-link">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                           
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content-row">
+
+                    <div class="project-description-col">
+                       
+                        <p class="timeline-description">
+                          
+                            A Web app bakery ordering system built using Java (Spring Boot Framework) and Mysql.
+                      
+                        </p>
+                 
+                    </div>
+
+                    <div class="project-tech-col">
+                      
+                        <h3 class="project-tech-title">Technologies Used</h3>
+                     
+                        <ul class="project-tech-list">
+
+                            <li>Java</li>
+
+                            <li>Spring Boot</li>
+
+                            <li>tomcat server</li>
+
+                            <li>Mysql</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="project-images-container">
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                </div>
+
+            </div> <!-- Closing brace of the project-card div -->
+
+            <br> <br>
+
+             <!-- Online Grocery Store project -->
+             <div class="project-card">
+
+                <div class="project-header">
+
+                    <div class="project-title-wrapper">
+
+                        <h2 class="timeline-title">Online Grocery Store 🥒🍅</h2>
+
+                        <a href="https://github.com/Mohammed-Amran/online-grocery-store" target="_blank" rel="noopener noreferrer" class="project-github-link">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                           
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content-row">
+
+                    <div class="project-description-col">
+                       
+                        <p class="timeline-description">
+                          
+                            A Web app grocery store built using Java (Spring Boot Framework) and Mysql.
+                      
+                        </p>
+                 
+                    </div>
+
+                    <div class="project-tech-col">
+                      
+                        <h3 class="project-tech-title">Technologies Used</h3>
+                     
+                        <ul class="project-tech-list">
+
+                            <li>Java</li>
+
+                            <li>Spring Boot</li>
+
+                            <li>tomcat server</li>
+
+                            <li>Mysql</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="project-images-container">
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                </div>
+
+            </div> <!-- Closing brace of the project-card div -->
+
+            <br> <br>
+
+            <!-- Support For Better Living Space project -->
+             <div class="project-card">
+
+                <div class="project-header">
+
+                    <div class="project-title-wrapper">
+
+                        <h2 class="timeline-title">Support For Better Living Space 🛠️🪴</h2>
+
+                        <a href="https://github.com/Mohammed-Amran/support-for-better-livingspace" target="_blank" rel="noopener noreferrer" class="project-github-link">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                           
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content-row">
+
+                    <div class="project-description-col">
+                       
+                        <p class="timeline-description">
+                          
+                            A Flutter mobile app for home service technician's built using Flutter and Firebase (Firestore database).
+                      
+                        </p>
+                 
+                    </div>
+
+                    <div class="project-tech-col">
+                      
+                        <h3 class="project-tech-title">Technologies Used</h3>
+                     
+                        <ul class="project-tech-list">
+
+                            <li>Flutter</li>
+
+                            <li>Firebase (Firestore Database)</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="project-images-container">
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                </div>
+
+            </div> <!-- Closing brace of the project-card div -->
+
+            <br> <br>
+            
+            <!-- Money Exchange System -->
+            <div class="project-card">
+
+                <div class="project-header">
+
+                    <div class="project-title-wrapper">
+
+                        <h2 class="timeline-title">Money Exchange System 🏧💵</h2>
+
+                        <a href="https://github.com/Mohammed-Amran/money-exchange-system" target="_blank" rel="noopener noreferrer" class="project-github-link">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                           
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content-row">
+
+                    <div class="project-description-col">
+                       
+                        <p class="timeline-description">
+                          
+                            An ATM System that Dispenses, Coalesces, and Convert's money between different currencies built using Java.
+                      
+                        </p>
+                 
+                    </div>
+
+                    <div class="project-tech-col">
+                      
+                        <h3 class="project-tech-title">Technologies Used</h3>
+                     
+                        <ul class="project-tech-list">
+
+                            <li>Java</li>
+
+                            <li>Javax package</li>
+
+                            <li>OOP</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="project-images-container">
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                </div>
+
+            </div> <!-- Closing brace of the project-card div -->
+
+            <br> <br>
+
+            <!-- Travel Guide Website -->
+            <div class="project-card">
+
+                <div class="project-header">
+
+                    <div class="project-title-wrapper">
+
+                        <h2 class="timeline-title">Travel-Guide Website 🧳✈️🗽</h2>
+
+                        <a href="https://github.com/Mohammed-Amran/travel-guide-website" target="_blank" rel="noopener noreferrer" class="project-github-link">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                           
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content-row">
+
+                    <div class="project-description-col">
+                       
+                        <p class="timeline-description">
+                          
+                            A Travel Guide Website, that suggests different locations to visit with different type of packages. Built using html, css, JS, and PHP.
+                      
+                        </p>
+                 
+                    </div>
+
+                    <div class="project-tech-col">
+                      
+                        <h3 class="project-tech-title">Technologies Used</h3>
+                     
+                        <ul class="project-tech-list">
+
+                            <li>HTML</li>
+
+                            <li>CSS</li>
+
+                            <li>JavaScript</li>
+
+                            <li>PHP</li>
+
+                            <li>Mysql</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="project-images-container">
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                    <div class="project-image-placeholder"></div>
+
+                </div>
+
+            </div> <!-- Closing brace of the project-card div -->
+
         </div>
+
     </section>
 
    
@@ -1563,47 +2044,61 @@ sideNavItems.forEach(item => {
 // Active navigation highlighting
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
+const headerHeight = document.querySelector('header').offsetHeight;
 
 window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if(pageYOffset >= (sectionTop - sectionHeight/3)) {
-            current = section.getAttribute('id');
-        }
-    });
+   
+                                         let current = '';
 
-    // Update top navigation
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
-        }
-    });
-    
-    // Update side navigation
-    sideNavItems.forEach(item => {
-        item.classList.remove('active');
-        if(item.getAttribute('data-section') === current) {
-            item.classList.add('active');
-        }
-    });
-});
+                                         sections.forEach(section => {
+                                          
+                                                                      const sectionTop = section.offsetTop - headerHeight;
+                                                                      
+                                                                      const sectionBottom = sectionTop + section.clientHeight;
+                                                                      
+                                                                      if(pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
 
-// Contact form submission
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-  
-                                                                                  e.preventDefault();
-                                                                                 
-                                                                                  // Add form submission logic here
-                                                                                 
-                                                                                  alert('Thank you for your message! I will get back to you soon.');
-                                                                                 
-                                                                                  this.reset();
-                                                                               
-                                                                                });
+                                                                                                                                    current = section.getAttribute('id');
+                                                                                                                                  
+                                                                                                                                   }
+                                                                    
+                                                                    }
+                                                                
+                                                         );
+
+                                          // Update top navigation
+                                          navLinks.forEach(link => {
+                                            
+                                                                    link.classList.remove('active');
+                                            
+                                                                    if(link.getAttribute('href').substring(1) === current) {
+                                                
+                                                                                                                            link.classList.add('active');
+                                                                                                                         
+                                                                                                                           }
+                                                                  }
+
+                                        );
+                                      
+                                          // Update side navigation
+                                          sideNavItems.forEach(item => {
+                                                                     
+                                                                        item.classList.remove('active');
+                                            
+                                                                        if(item.getAttribute('data-section') === current) {
+                                                 
+                                                                                                                           item.classList.add('active');
+                                             
+                                                                                                                          }
+                    
+                                                                      }
+                                                             
+                                                             );
+
+                                       }
+
+                        );
+
 
     </script>
 
